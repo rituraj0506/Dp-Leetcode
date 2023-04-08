@@ -1,0 +1,48 @@
+You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint
+stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police 
+if two adjacent houses were broken into on the same night.
+
+Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
+
+
+Example 1:
+Input: nums = [1,2,3,1]
+Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+Total amount you can rob = 1 + 3 = 4.
+
+same as house robber only diff is first and last house are adjacent
+means we create two vector and not take first and last ele of array respectively and find out max of them
+
+ int fun(int i,vector<int>& nums,vector<int>&dp)
+    {
+        if(i==0) return nums[0];
+        if(i<0) return 0;
+        if(dp[i]!=-1) return dp[i];
+        int take=nums[i]+fun(i-2,nums,dp);
+        int nottake=0+fun(i-1,nums,dp);
+        return dp[i]=max(take,nottake);
+    }
+    int rob1(vector<int>& nums) {
+        int n=nums.size();
+     vector<int>dp(n+1,-1);
+        return fun(n-1,nums,dp);
+    }
+     int rob(vector<int>& nums) {
+      int n=nums.size();
+         if(n==1) return nums[0];
+         vector<int>temp,temp1;
+         for(int i=0;i<n;i++)
+         {
+             if(i!=0)
+            temp.push_back(nums[i]);
+             if(i!=n-1)
+                 temp1.push_back(nums[i]);
+         }
+         return max(rob1(temp),rob1(temp1));
+    }
+    
+    
+    t(c)=o(n)
+    s(c)=o(n)+recursion stack space
+    
