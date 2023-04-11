@@ -34,4 +34,5 @@ public:
 
 // from that pt to upper min sum  take 
 
-t(c)=o(n*m*
+t(c)=o(n*m)
+s(c)=o(n)
