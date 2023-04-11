@@ -1,0 +1,37 @@
+class Solution {
+public:
+    int f(int i,int j,vector<vector<int>>& matrix,vector<vector<int>>&dp)
+    {
+        int m = matrix[0].size();
+        if(j<0||j>=m) return 1e9; // in base case in upper row no any base case case becoz upto that but left right have base case
+        if(i==0) return matrix[i][j];
+        if(dp[i][j]!=-1) return dp[i][j];
+        int up=f(i-1,j,matrix,dp)+matrix[i][j];
+        int left=f(i-1,j-1,matrix,dp)+matrix[i][j];
+        int right=f(i-1,j+1,matrix,dp)+matrix[i][j];
+        return dp[i][j]= min({up,left,right});
+    }
+    int minFallingPathSum(vector<vector<int>>& matrix) {
+        int m=matrix.size();
+        int n=matrix.size();
+        int mini=1e9;
+        vector<vector<int>>dp(n,vector<int>(m,-1));
+        for(int i=0;i<m;i++)
+        {
+           mini=min(mini,f(n-1,i,matrix,dp));
+        }
+        return mini;
+    }
+};
+
+// in the given ques you can starts at any element in the first row and go trough any ele in last row
+//  i st from last start from any ele in last row
+
+        // for(int i=0;i<m;i++)
+        // {
+        //   f(n-1,i,matrix);
+        // }
+
+// from that pt to upper min sum  take 
+
+t(c)=o(n*m*
