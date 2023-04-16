@@ -36,4 +36,4 @@ prev que ha fix start and end point but here end points are varing
 //so we st from fix pt in array it does not go out of bound 
 
 t(c)=o(n*N)
-s(c)=o(n)
+s(c)=o(n);
