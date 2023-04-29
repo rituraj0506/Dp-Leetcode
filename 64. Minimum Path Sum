@@ -16,7 +16,7 @@ Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
         return dp[i][j]=min(up,left);
     }
     int minPathSum(vector<vector<int>>& grid) {
-      // if you out if the path take max val you cannot take this if in case min path
+      // if you out if the path take max val then you cannot take this if in case min path
         int n=grid.size();
         int m=grid[0].size();
        vector<vector<int>>dp(n,vector<int>(m,-1));
